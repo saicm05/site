@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Redirecting...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
@@ -17,20 +17,52 @@
       text-align: center;
       padding: 20px;
     }
+
+    .content {
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+
+    .spinner {
+      margin: 20px auto;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #ffffff33;
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
     a {
       color: #4da6ff;
       text-decoration: underline;
     }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
   <script>
-    setTimeout(function() {
-      window.location.href = "https://sai-cm-brief.lovable.app/";
-    }, 5000); // 5000ms = 5 seconds
+    window.addEventListener("DOMContentLoaded", function () {
+      const audio = new Audio("https://www.myinstants.com/media/sounds/mario-coin.mp3");
+      audio.play().catch(() => {
+        console.log("Autoplay blocked until user interacts.");
+      });
+
+      setTimeout(function () {
+        window.location.href = "https://sai-cm-brief.lovable.app/";
+      }, 3000);
+    });
   </script>
 </head>
 <body>
-  <div>
-    <h2>Taking you to Sai CM's website...</h2>
+  <div class="content">
+    <h2>Redirecting you to Sai CM's website...</h2>
+    <div class="spinner"></div>
     <p>If you're not redirected, <a href="https://sai-cm-brief.lovable.app/">click here</a>.</p>
   </div>
 </body>
